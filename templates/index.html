@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
 <head>
   <meta charset="UTF-8" />
@@ -9,23 +10,41 @@
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
   <title>항해피디아</title>
   <style>
+    /* 항해피디아 공통 색상 */
+    :root {
+      --hanghae: #ff0558;
+    }
+    
     .navbar-brand {
       width: 12vw;
+    }
+    .login-btn {
+      color: gray;
+    }
+    .login-btn:hover {
+      color: var(--hanghae);
+    }
+    .signup-btn {
+      border-color: gray;
+    }
+    .signup-btn:hover {
+      color: white;
+      background-color: var(--hanghae);
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar bg-body-tertiary">
+  <nav class="navbar border-bottom">
     <div class="container-fluid">
       <div class="navbar-brand">
-        <img class="img-fluid" src="../static/logo.png" alt="" />
+        <img class="img-fluid" src="../static/logo.png" alt=""  href="{{ url_for('home') }}" />
       </div>
       <div class="d-flex me-4">
-        <button type="button" class="btn me-2 opacity-50" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button type="button" class="btn me-2 login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
           로그인
         </button>
-        <button type="button" class="btn btn-outline-dark opacity-75" data-bs-toggle="modal"
+        <button type="button" class="btn signup-btn" data-bs-toggle="modal"
           data-bs-target="#signupModal">
           회원가입
         </button>
