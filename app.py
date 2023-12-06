@@ -32,5 +32,9 @@ with app.app_context():
 def home():
     return render_template("index.html")
 
+@app.route("/api/user")
+def user_create():
+    return 
+
 if __name__ == "__main__":
     app.run(debug=True)
