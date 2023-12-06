@@ -51,5 +51,6 @@ def signup():
         # 데이터베이스에 추가
         db.session.add(new_user)
         db.session.commit()
+        
 if __name__ == "__main__":
     app.run(debug=True)
