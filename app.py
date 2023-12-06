@@ -34,7 +34,7 @@ def home():
     return render_template("index.html")
 
 # 회원가입
-@app.route('/api/user', methods=['POST'])
+@app.route('/api/signup', methods=['POST'])
 def api_signup():
     userName = request.form['userName']
     userId = request.form['userId']
