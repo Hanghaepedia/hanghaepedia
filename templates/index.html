@@ -45,8 +45,23 @@
           <img class="img-fluid" src="../static/logo.png" alt="" href="{{ url_for('home') }}" />
         </div>
         <div class="d-flex me-4">
-          <button type="button" class="btn me-2 login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+          <button
+            type="button"
+            class="btn me-2 login-btn"
+            id="login-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+          >
             로그인
+          </button>
+          <button
+            type="button"
+            class="btn me-2 login-btn"
+            id="logout-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#logoutModal"
+          >
+            로그아웃
           </button>
           <button type="button" class="btn signup-btn" data-bs-toggle="modal" data-bs-target="#signupModal">
             회원가입
@@ -57,7 +72,7 @@
 
     <!-- 로그인 모달 -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="loginModalLabel">로그인</h1>
@@ -85,7 +100,7 @@
 
     <!-- 회원가입 모달 -->
     <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="signupModalLabel">회원가입</h1>
@@ -111,7 +126,7 @@
                   type="password"
                   id="password-check"
                   class="form-control"
-                  placeholder="비밀번호를 입력해주세요."
+                  placeholder="비밀번호를 다시 입력해주세요."
                 />
               </div>
             </form>
@@ -123,9 +138,44 @@
         </div>
       </div>
     </div>
+
+    <!-- 로그아웃 모달 -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div>로그아웃 하시겠습니까?</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            <button type="button" class="btn btn-primary" onclick="logout()">확인</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
+      $(function () {
+        let token = $.cookie('mytoken');
+        console.log('token : ', !!token);
+        if (!!token) {
+          $('#login-btn').hide();
+        } else {
+          $('#logout-btn').hide();
+        }
+      });
       // 로그인
       const login = () => {
+        userId_receive = $('#login-user-id').val();
+        password_receive = $('#login-password').val();
+
+        // 유효성 검사
+        if (userId_receive === '') {
+          alert('아이디를 입력해주세요!');
+          return;
+        } else if (password_receive === '') {
+          alert('비밀번호를 입력해주세요!');
+          return;
+        }
         $.ajax({
           type: 'POST',
           url: '/api/login',
@@ -153,19 +203,23 @@
         password_receive = $('#sign-password').val();
         password_check_receive = $('#password-check').val();
 
-        if (!!userName_receive) {
+        // 유효성 검사
+        if (userName_receive === '') {
           alert('이름을 입력해주세요!');
-        } else if (!!userId_receive) {
+          return;
+        } else if (userId_receive === '') {
           alert('아이디를 입력해주세요!');
-        } else if (!!password_receive) {
+          return;
+        } else if (password_receive === '') {
           alert('비밀번호를 입력해주세요!');
-        } else if (!!password_check_receive) {
+          return;
+        } else if (password_check_receive === '') {
           alert('비밀번호 확인을 입력해주세요!');
+          return;
         } else if (password_receive !== password_check_receive) {
           alert('비밀번호가 다릅니다.');
+          return;
         }
-        console.log('userName_receive : ', userName_receive);
-
         $.ajax({
           type: 'POST',
           url: '/api/signup',
