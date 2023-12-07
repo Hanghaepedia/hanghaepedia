@@ -33,6 +33,7 @@ with app.app_context():
 def home():
     return render_template("index.html")
 
+<<<<<<< HEAD
 # 회원가입 데이터 양식 받기.
 @app.route('/api/user', methods=['GET', 'POST'])
 def signup():
@@ -40,6 +41,14 @@ def signup():
         username = request.form['user_name']
         userid = request.form['user_id']
         password = request.form['user_password']
+=======
+# 회원가입
+@app.route('/api/signup', methods=['POST'])
+def api_signup():
+    userName = request.form['userName']
+    userId = request.form['userId']
+    password = request.form['password']
+>>>>>>> develop
 
         # 사용자가 이미 존재하는지 확인
         existing_user = User.query.filter_by(userName=username).first()
