@@ -117,3 +117,51 @@ const logout = () => {
   $.removeCookie('mytoken');
   window.location.href = '/';
 };
+
+// 자동 슬라이드
+document.addEventListener('DOMContentLoaded', function () {
+  // Get the slider elements
+  var slides = document.querySelector('.slides');
+  var slideItems = document.querySelectorAll('.slide');
+  var manualBtns = document.querySelectorAll('.manual-btn');
+
+  // Set the initial slide index
+  var currentSlide = 0;
+
+  // Function to update the slider
+  function updateSlider() {
+    slides.style.transform = 'translateX(' + -currentSlide * 103 + '%)';
+  }
+
+  // Function to handle manual button click
+  function handleManualBtnClick(index) {
+    currentSlide = index;
+    updateSlider();
+  }
+
+  // Event listeners for manual buttons
+  manualBtns.forEach(function (btn, index) {
+    btn.addEventListener('click', function () {
+      handleManualBtnClick(index);
+    });
+  });
+
+  // Function to auto slide
+  function autoSlide() {
+    currentSlide = (currentSlide + 1) % slideItems.length;
+    updateSlider();
+  }
+
+  // Set interval for auto slide (adjust the duration as needed)
+  var autoSlideInterval = setInterval(autoSlide, 5000);
+
+  // Pause auto slide on hover
+  slides.addEventListener('mouseenter', function () {
+    clearInterval(autoSlideInterval);
+  });
+
+  // Resume auto slide on mouse leave
+  slides.addEventListener('mouseleave', function () {
+    autoSlideInterval = setInterval(autoSlide, 5000);
+  });
+});
