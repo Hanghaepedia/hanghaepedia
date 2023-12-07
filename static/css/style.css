@@ -148,14 +148,14 @@
   align-items: center;
 }
 
-.slide {
+.auto-slide {
   width: 20%;
   display: flex;
   margin-right: 100%;
   transition: 2s;
 }
 
-.slide > img {
+.auto-slide > img {
   width: 600%;
   height: 100%;
   margin-right: 10px;
@@ -218,4 +218,26 @@
   height: 100%;
   object-fit: cover;
   margin-right: 2px;
+}
+
+#gridBottom {
+  font-weight: bold;
+}
+#cardGrid {
+  width: 300px;
+}
+
+#prevBtn {
+  color: black;
+  margin-right: auto;
+  font-size: 50px;
+}
+
+#nextBtn {
+  color: black;
+  margin-left: auto;
+  font-size: 50px;
+}
+#carouselExample {
+  border: 1px solid white;
 }

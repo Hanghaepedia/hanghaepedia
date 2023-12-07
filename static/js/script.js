@@ -123,7 +123,7 @@ const logout = () => {
 document.addEventListener('DOMContentLoaded', function () {
   // Get the slider elements
   var slides = document.querySelector('.slides');
-  var slideItems = document.querySelectorAll('.slide');
+  var slideItems = document.querySelectorAll('.auto-slide');
   var manualBtns = document.querySelectorAll('.manual-btn');
 
   // Set the initial slide index
