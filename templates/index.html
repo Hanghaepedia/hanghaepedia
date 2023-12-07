@@ -63,7 +63,13 @@
           >
             로그아웃
           </button>
-          <button type="button" class="btn signup-btn" data-bs-toggle="modal" data-bs-target="#signupModal">
+          <button
+            type="button"
+            class="btn signup-btn"
+            id="signup-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#signupModal"
+          >
             회원가입
           </button>
         </div>
@@ -159,6 +165,7 @@
         console.log('token : ', !!token);
         if (!!token) {
           $('#login-btn').hide();
+          $('#signup-btn').hide();
         } else {
           $('#logout-btn').hide();
         }
