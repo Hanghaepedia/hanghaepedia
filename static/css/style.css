@@ -30,7 +30,7 @@
   height: 500px;
   
   margin-left: 150px;
-  background-color: gray;
+  
   
 }
 
@@ -39,11 +39,29 @@
   font-weight: 500px;
   margin: 10px 0 20px 10px;
 }
-.box_content>img{
-  margin-left: 20px;
-  width: 200px;
-  height: 314px;
-  object-fit: fill;
-  margin-right: 20px;
+.swiper {
+  width: 100%;
+  height: 100%;
   
 }
+
+.swiper-slide {
+  font-size: 18px;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-right: 2px;
+  
+}
+
+
+
