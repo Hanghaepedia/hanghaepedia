@@ -129,3 +129,24 @@
   border-right-width: 1px;
   border-color: rgb(210, 210, 210) !important;
 }
+#gridBottom {
+  font-weight: bold;
+}
+#cardGrid {
+  width: 300px;
+}
+
+#prevBtn {
+  color: black;
+  margin-right: auto;
+  font-size: 50px;
+}
+
+#nextBtn {
+  color: black;
+  margin-left: auto;
+  font-size: 50px;
+}
+#carouselExample {
+  border: 1px solid white;
+}

@@ -21,6 +21,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="../static/js/jquery.cookie.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
   </head>
 
   <body>
@@ -62,15 +66,16 @@
     </nav>
 
     <!-- 메인 컬렉션 -->
+    <h4>항해피디아 컬렉션</h4>
     <div id="carouselExample" class="carousel slide">
-      항해피디아 컬렉션
       <div class="carousel-inner">
         <!-- 캐러셀1 -->
-        <div class="carousel-item active">
+        <div id="carouselStlye1" class="carousel-item active">
           <div class="card-group">
             <!-- 그리드1 -->
-            <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div id="cardGrid" class="card">
+              <!-- 1당 24px g=gap x축 y축 -->
+              <div class="row row-cols-1 row-cols-md-2 gy-1 gx-2">
                 <div class="col">
                   <div class="card">
                     <img
@@ -108,12 +113,12 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">항해 최고 인기작</div>
+              <div id="gridBottom">항해 최고 인기작</div>
             </div>
 
             <!-- 그리드2 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -151,12 +156,12 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">토론토영화제 관객상 수상작</div>
+              <div id="gridBottom">토론토영화제 관객상 수상작</div>
             </div>
 
             <!-- 그리드3 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -194,12 +199,12 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">아카데미 작품상 수상작</div>
+              <div id="gridBottom">아카데미 작품상 수상작</div>
             </div>
 
             <!-- 그리드4 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -237,16 +242,16 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">항해피디아 별점 TOP</div>
+              <div id="gridBottom">항해피디아 별점 TOP</div>
             </div>
           </div>
         </div>
         <!-- 캐러셀2 -->
-        <div class="carousel-item">
+        <div id="carouselStlye2" class="carousel-item">
           <div class="card-group">
             <!-- 그리드1 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -284,12 +289,12 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">아카데미 남우주연상 수상작</div>
+              <div id="gridBottom">아카데미 남우주연상 수상작</div>
             </div>
 
             <!-- 그리드2 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -327,12 +332,12 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">아카데미 여우주연상 수상작</div>
+              <div id="gridBottom">아카데미 여우주연상 수상작</div>
             </div>
 
             <!-- 그리드3 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -370,12 +375,12 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">아카데미 촬영상 수상작</div>
+              <div id="gridBottom">아카데미 촬영상 수상작</div>
             </div>
 
             <!-- 그리드4 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -413,17 +418,17 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">아카데미 각본상 수상작</div>
+              <div id="gridBottom">아카데미 각본상 수상작</div>
             </div>
           </div>
         </div>
 
         <!-- 캐러셀3 -->
-        <div class="carousel-item">
+        <div id="carouselStlye3" class="carousel-item">
           <div class="card-group">
             <!-- 그리드1 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -461,12 +466,12 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">아카데미 시각효과상 수상작</div>
+              <div id="gridBottom">아카데미 시각효과상 수상작</div>
             </div>
 
             <!-- 그리드2 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -504,12 +509,12 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">아카데미 음향상 수상작</div>
+              <div id="gridBottom">아카데미 음향상 수상작</div>
             </div>
 
             <!-- 그리드3 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -547,12 +552,12 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">아카데미 장편 애니메이션상 수상작</div>
+              <div id="gridBottom">아카데미 장편 애니메이션상 수상작</div>
             </div>
 
             <!-- 그리드4 -->
             <div class="card">
-              <div class="row row-cols-1 row-cols-md-2 g-4">
+              <div class="row row-cols-1 row-cols-md-2 g-8">
                 <div class="col">
                   <div class="card">
                     <img
@@ -590,28 +595,33 @@
                   </div>
                 </div>
               </div>
-              <div class="gridBottom">아카데미 분장상 수상작</div>
+              <div id="gridBottom">아카데미 분장상 수상작</div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- 캐러셀 버튼 -->
       <button
         class="carousel-control-prev"
         type="button"
         data-bs-target="#carouselExample"
         data-bs-slide="prev"
       >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span id="prevBtn" class="material-symbols-outlined">
+          arrow_circle_left
+        </span>
       </button>
       <button
+        id=""
         class="carousel-control-next"
         type="button"
         data-bs-target="#carouselExample"
         data-bs-slide="next"
       >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        <span id="nextBtn" class="material-symbols-outlined">
+          arrow_circle_right
+        </span>
       </button>
     </div>
 
