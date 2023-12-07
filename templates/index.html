@@ -77,7 +77,9 @@
             <button type="button" class="btn-hanghae" onclick="login()">로그인</button>
             <div class="s-msg">
               계정이 없으신가요?
-              <button class="s-btn">회원가입</button>
+              <button class="s-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signupModal">
+                회원가입
+              </button>
             </div>
           </div>
         </div>
@@ -88,38 +90,34 @@
     <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="signupModalLabel">회원가입</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="m-header mb-4">
+            <img class="img-fluid" src="../static/logo.png" alt="" />
+            <h1 class="modal-title text-center fs-4" id="signupModalLabel">회원가입</h1>
           </div>
           <div class="modal-body">
             <form>
               <div class="mb-3">
-                <label for="userName" class="form-label">이름</label>
-                <input type="text" id="sign-user-name" class="form-control" placeholder="이름을 입력해주세요." />
+                <input type="text" id="sign-user-name" class="input-form" placeholder="이름" />
               </div>
               <div class="mb-3">
-                <label for="userId" class="form-label">아이디</label>
-                <input type="text" id="sign-user-id" class="form-control" placeholder="아이디를 입력해주세요." />
+                <input type="text" id="sign-user-id" class="input-form" placeholder="아이디" />
               </div>
               <div class="mb-3">
-                <label for="password" class="form-label">비밀번호</label>
-                <input type="password" id="sign-password" class="form-control" placeholder="비밀번호를 입력해주세요." />
+                <input type="password" id="sign-password" class="input-form" placeholder="비밀번호" />
               </div>
               <div class="mb-3">
-                <label for="passwordCheck" class="form-label">비밀번호 확인</label>
-                <input
-                  type="password"
-                  id="password-check"
-                  class="form-control"
-                  placeholder="비밀번호를 다시 입력해주세요."
-                />
+                <input type="password" id="password-check" class="input-form" placeholder="비밀번호 확인" />
               </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-            <button type="button" class="btn btn-primary" onclick="signup()">확인</button>
+          <div class="m-footer">
+            <button type="button" class="btn-hanghae" onclick="signup()">회원가입</button>
+            <div class="s-msg">
+              이미 가입하셨나요?
+              <button class="s-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
+                로그인
+              </button>
+            </div>
           </div>
         </div>
       </div>
