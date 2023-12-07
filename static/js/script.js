@@ -3,7 +3,6 @@
 // 토큰이 존재하면 로그인 상태, 없으면 로그아웃 상태로 보여준다.
 $(function () {
   let token = $.cookie('mytoken');
-  console.log('token : ', !!token);
   if (!!token) {
     $('#login-btn').hide();
     $('#signup-btn').hide();
