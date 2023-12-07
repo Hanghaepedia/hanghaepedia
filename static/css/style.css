@@ -4,6 +4,10 @@
 }
 
 /* ### 민지 작성 ### */
+.navbar {
+  background-color: white;
+  opacity: 90%;
+}
 .logo-img {
   width: 151px;
   height: auto;
@@ -132,6 +136,12 @@
 }
 
 /* ### 재윤님 작성 ### */
+.boxoffice-slide {
+  margin-top: 100px;
+}
+.box_container {
+  margin-bottom: 80px;
+}
 .slider {
   width: 1070px;
   height: 100%;
