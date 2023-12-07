@@ -97,3 +97,24 @@ const logout = () => {
   $.removeCookie('mytoken');
   window.location.href = '/';
 };
+
+
+//fetch 하기
+$(document).ready(function(){
+	movie()
+});
+
+function movie(){
+	let base_url = "https://image.tmdb.org/t/p/w500"
+	let url = 'https://api.themoviedb.org/3/movie/popular?api_key=127d1ec8dfd28bfe9f6b8d15f689cdd4&language=ko-KR&page=1'
+
+  fetch(url).then(res => res.json()).then((data) => {
+      let movies = data['results']
+      for(var i=0 ; i<5; i++){
+        let top_movie = movies[i]
+        let top_img= base_url+top_movie['backdrop_path']
+        let temp_html =`<img class="img"  src="${top_img}">`
+        $('#box_content').append(temp_html)
+      }
+  })
+}

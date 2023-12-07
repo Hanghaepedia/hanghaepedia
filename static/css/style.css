@@ -23,3 +23,27 @@
   color: white;
   background-color: var(--hanghae);
 }
+.box_div{
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  height: 500px;
+  
+  margin-left: 150px;
+  background-color: gray;
+  
+}
+
+.box_title{
+  font-size: 20px;
+  font-weight: 500px;
+  margin: 10px 0 20px 10px;
+}
+.box_content>img{
+  margin-left: 20px;
+  width: 200px;
+  height: 314px;
+  object-fit: fill;
+  margin-right: 20px;
+  
+}
