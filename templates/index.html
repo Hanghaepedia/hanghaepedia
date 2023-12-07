@@ -10,39 +10,18 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <title>항해피디아</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="../static/jquery.cookie.js"></script>
-    <style>
-      /* 항해피디아 공통 색상 */
-      :root {
-        --hanghae: #ff0558;
-      }
-
-      .navbar-brand {
-        width: 12vw;
-      }
-      .login-btn {
-        color: gray;
-      }
-      .login-btn:hover {
-        color: var(--hanghae);
-      }
-      .signup-btn {
-        border-color: gray;
-      }
-      .signup-btn:hover {
-        color: white;
-        background-color: var(--hanghae);
-      }
-    </style>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="../static/js/jquery.cookie.js"></script>
   </head>
 
   <body>
     <nav class="navbar border-bottom">
       <div class="container-fluid">
-        <div class="navbar-brand">
-          <img class="img-fluid" src="../static/logo.png" alt="" href="{{ url_for('home') }}" />
+        <div class="navbar-brand" onclick="{{ url_for('home') }}">
+          <img class="img-fluid" src="../static/logo.png" alt="" />
         </div>
         <div class="d-flex me-4">
           <button
@@ -159,103 +138,6 @@
         </div>
       </div>
     </div>
-    <script>
-      $(function () {
-        let token = $.cookie('mytoken');
-        console.log('token : ', !!token);
-        if (!!token) {
-          $('#login-btn').hide();
-          $('#signup-btn').hide();
-        } else {
-          $('#logout-btn').hide();
-        }
-      });
-      // 로그인
-      const login = () => {
-        userId_receive = $('#login-user-id').val();
-        password_receive = $('#login-password').val();
-
-        // 유효성 검사
-        if (userId_receive === '') {
-          alert('아이디를 입력해주세요!');
-          return;
-        } else if (password_receive === '') {
-          alert('비밀번호를 입력해주세요!');
-          return;
-        }
-        $.ajax({
-          type: 'POST',
-          url: '/api/login',
-          data: { userId: $('#login-user-id').val(), password: $('#login-user-pw').val() },
-          success: function (response) {
-            if (response['result'] == 'success') {
-              // 로그인이 정상적으로 되면, 토큰을 받아옵니다.
-              // 이 토큰을 mytoken이라는 키 값으로 쿠키에 저장합니다.
-              $.cookie('mytoken', response['token']);
-
-              window.location.href = '/';
-            } else {
-              // 로그인이 안되면 에러메시지를 띄웁니다.
-              alert(response['msg']);
-            }
-          },
-        });
-      };
-
-      // 회원가입
-      const signup = () => {
-        userName_receive = $('#sign-user-name').val();
-        userId_receive = $('#sign-user-id').val();
-        password_receive = $('#sign-password').val();
-        password_check_receive = $('#password-check').val();
-
-        // 유효성 검사
-        if (userName_receive === '') {
-          alert('이름을 입력해주세요!');
-          return;
-        } else if (userId_receive === '') {
-          alert('아이디를 입력해주세요!');
-          return;
-        } else if (password_receive === '') {
-          alert('비밀번호를 입력해주세요!');
-          return;
-        } else if (password_check_receive === '') {
-          alert('비밀번호 확인을 입력해주세요!');
-          return;
-        } else if (password_receive !== password_check_receive) {
-          alert('비밀번호가 다릅니다.');
-          return;
-        }
-        $.ajax({
-          type: 'POST',
-          url: '/api/signup',
-          data: {
-            userName: userId_receive,
-            userId: userId_receive,
-            password: password_receive,
-          },
-          success: function (response) {
-            if (response['result'] == 'success') {
-              // 로그인이 정상적으로 되면, 토큰을 받아옵니다.
-              // 이 토큰을 mytoken이라는 키 값으로 쿠키에 저장합니다.
-              $.cookie('mytoken', response['token']);
-
-              alert('회원가입 완료!');
-              window.location.href = '/';
-            } else {
-              // 로그인이 안되면 에러메시지를 띄웁니다.
-              alert(response['msg']);
-            }
-          },
-        });
-      };
-
-      // 로그아웃
-      const logout = () => {
-        $.removeCookie('mytoken');
-        window.location.href = '/';
-      };
-    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
