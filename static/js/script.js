@@ -3,6 +3,7 @@
 // 토큰이 존재하면 로그인 상태, 없으면 로그아웃 상태로 보여준다.
 $(function () {
   let token = $.cookie('mytoken');
+
   if (!!token) {
     $('#login-btn').hide();
     $('#signup-btn').hide();
@@ -165,3 +166,50 @@ document.addEventListener('DOMContentLoaded', function () {
     // autoSlideInterval = setInterval(autoSlide, 5000);
   });
 });
+
+//fetch 하기
+$(document).ready(function () {
+  var swiper = new Swiper('.mySwiper', {
+    slidesPerView: 4,
+    centeredSlides: false,
+    spaceBetween: 30,
+    grabCursor: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+
+  function movie() {
+    // 영화진흥위원회 Open API 호출
+    let base_url = 'https://image.tmdb.org/t/p/w500';
+    let url =
+      'https://api.themoviedb.org/3/movie/popular?api_key=127d1ec8dfd28bfe9f6b8d15f689cdd4&language=ko-KR&page=1';
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        let movies = data['results'];
+
+        for (var i = 0; i < movies.length; i++) {
+          let top_movie = movies[i];
+          let top_img = base_url + top_movie['poster_path'];
+          let temp_html2 =
+            '<div class="swiper-slide"><img src="' +
+            top_img +
+            '" alt="" loading="lazy"/><div class="swiper-lazy-preloader"></div></div>';
+          let temp_html = `<div id="swiper-slide"class="swiper-slide"><img src="${top_img}" alt="" loading="lazy"><div class="swiper-lazy-preloader"></div></div>`;
+          swiper.appendSlide([temp_html2]);
+          // $('#swiper-wrapper').append(temp_html2);
+        }
+      });
+  }
+  movie();
+});
+
+function getDirection() {
+  var windowWidth = window.innerWidth;
+  var direction = window.innerWidth <= 760 ? 'horizontal' : 'horizontal';
+
+  return direction;
+}
