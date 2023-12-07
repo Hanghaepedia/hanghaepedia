@@ -3,8 +3,14 @@
   --hanghae: #ff0558;
 }
 
-.navbar-brand {
-  width: 12vw;
+.logo-img {
+  width: 151px;
+  height: auto;
+}
+.modal-logo-img {
+  display: block;
+  margin: auto;
+  width: 320px;
 }
 .login-btn {
   color: gray;
@@ -31,6 +37,13 @@
   padding: 0px 12px;
   border-radius: 6px;
   border: none;
+}
+.input-form:focus {
+  outline: none;
+}
+.input-form-error {
+  background: rgb(252, 241, 240);
+  border: 1px solid rgb(238, 145, 136);
 }
 .m-footer {
   padding: 1rem;
@@ -73,4 +86,46 @@
   color: white;
   text-align: center;
   width: 100%;
+}
+.alert-msg {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 22px;
+}
+.logout-check {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 20px;
+  white-space: pre-wrap;
+  padding: 0px 0px 24px;
+  border-bottom: 1px solid rgb(210, 210, 210);
+  margin: 8px 0px 0px;
+  word-break: break-all;
+}
+.logout-modal-btn {
+  background: none;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+  flex: 1 1 0%;
+  color: rgb(255, 47, 110);
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.7px;
+  line-height: 22px;
+  border: none;
+}
+.close {
+  border-style: none solid none none;
+  border-top-width: initial;
+  border-bottom-width: initial;
+  border-left-width: initial;
+  border-image: initial;
+  border-right-width: 1px;
+  border-color: rgb(210, 210, 210) !important;
 }

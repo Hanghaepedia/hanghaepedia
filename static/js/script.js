@@ -12,6 +12,28 @@ $(function () {
   }
 });
 
+// 유효성(validation) 검증
+const inputValChk = (inputType, inputId) => {
+  let regex;
+
+  if (inputType === 'userName') {
+    // 한글 이름 가능, 영어 이름 가능
+    regex = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+  } else if (inputType === 'userId') {
+    // 소문자 + 숫자 + 언더바/하이픈 허용 4~20자리
+    regex = /^[a-z0-9_-]{4,20}$/;
+  } else if (inputType === 'password') {
+    //  8 ~ 10자 영문, 숫자 조합
+    regex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/;
+  }
+
+  if (!regex.test($('#' + inputId).val())) {
+    $('#' + inputId).addClass('input-form-error');
+  } else {
+    $('#' + inputId).removeClass('input-form-error');
+  }
+};
+
 // 로그인
 const login = () => {
   userId_receive = $('#login-user-id').val();
@@ -19,10 +41,10 @@ const login = () => {
 
   // 유효성 검사
   if (userId_receive === '') {
-    alert('아이디를 입력해주세요!');
+    $('#login-user-id').addClass('input-form-error');
     return;
   } else if (password_receive === '') {
-    alert('비밀번호를 입력해주세요!');
+    $('#login-password').addClass('input-form-error');
     return;
   }
   $.ajax({
@@ -53,19 +75,19 @@ const signup = () => {
 
   // 유효성 검사
   if (userName_receive === '') {
-    alert('이름을 입력해주세요!');
+    $('#sign-user-name').addClass('input-form-error');
     return;
   } else if (userId_receive === '') {
-    alert('아이디를 입력해주세요!');
+    $('#sign-user-id').addClass('input-form-error');
     return;
   } else if (password_receive === '') {
-    alert('비밀번호를 입력해주세요!');
+    $('#sign-password').addClass('input-form-error');
     return;
   } else if (password_check_receive === '') {
-    alert('비밀번호 확인을 입력해주세요!');
+    $('#password-check').addClass('input-form-error');
     return;
   } else if (password_receive !== password_check_receive) {
-    alert('비밀번호가 다릅니다.');
+    $('#password-check').addClass('input-form-error');
     return;
   }
   $.ajax({
@@ -82,7 +104,6 @@ const signup = () => {
         // 이 토큰을 mytoken이라는 키 값으로 쿠키에 저장합니다.
         $.cookie('mytoken', response['token']);
 
-        alert('회원가입 완료!');
         window.location.href = '/';
       } else {
         // 로그인이 안되면 에러메시지를 띄웁니다.
