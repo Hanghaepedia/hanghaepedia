@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to update the slider
   function updateSlider() {
-    slides.style.transform = 'translateX(' + -currentSlide * 103 + '%)';
+    slides.style.transform = 'translateX(' + -currentSlide * 1120 + 'px)';
   }
 
   // Function to handle manual button click
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Set interval for auto slide (adjust the duration as needed)
-  var autoSlideInterval = setInterval(autoSlide, 5000);
+  // var autoSlideInterval = setInterval(autoSlide, 5000);
 
   // Pause auto slide on hover
   slides.addEventListener('mouseenter', function () {
@@ -162,6 +162,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Resume auto slide on mouse leave
   slides.addEventListener('mouseleave', function () {
-    autoSlideInterval = setInterval(autoSlide, 5000);
+    // autoSlideInterval = setInterval(autoSlide, 5000);
   });
 });

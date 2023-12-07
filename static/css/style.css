@@ -131,22 +131,18 @@
   border-color: rgb(210, 210, 210) !important;
 }
 
-/* ### 재윤 작성 ### */
+/* ### 재윤님 작성 ### */
 .slider {
-  width: 100%;
+  width: 1070px;
   height: 100%;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  background-color: black;
 }
 
 .slides {
   width: 100%;
   height: 100%;
   margin-top: 20px;
-  margin-bottom: 40px;
-  margin-left: 20%;
+  margin-bottom: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -166,13 +162,9 @@
 }
 
 .slide-manual {
-  width: 100%;
   height: 10px;
-  margin-top: 325px;
   display: flex;
   justify-content: center;
-  position: absolute;
-  margin-right: 80px;
 }
 
 .manual-btn {
