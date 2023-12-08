@@ -318,8 +318,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 140px;
+  margin-bottom: 70px;
   margin-right: 70px;
+  left: 10%;
 }
 .carousel-caption > img {
   display: flex;
@@ -327,12 +328,19 @@
   margin-top: 60px;
 }
 .carousel-caption > h3 {
+  text-align: left;
   font-size: 70px;
-  margin-top: 30px;
+  margin-top: 70px;
 }
 .carousel-caption > p {
+  text-align: left;
   font-size: 17px;
   width: 390px;
   text-overflow: ellipsis;
-  margin-top: 30px;
+  margin-top: 50px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 10%;
 }
