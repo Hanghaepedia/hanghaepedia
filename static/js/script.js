@@ -180,6 +180,32 @@ $(document).ready(function () {
     },
   });
 
+  // function movie() {
+  //   // 영화진흥위원회 Open API 호출
+  //   let base_url = 'https://image.tmdb.org/t/p/w500';
+  //   let url =
+  //     'https://api.themoviedb.org/3/movie/popular?api_key=127d1ec8dfd28bfe9f6b8d15f689cdd4&language=ko-KR&page=1';
+
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       let movies = data['results'];
+
+  //       for (var i = 0; i < movies.length; i++) {
+  //         let top_movie = movies[i];
+  //         let top_img = base_url + top_movie['poster_path'];
+  //         let temp_html2 =
+  //           '<div class="swiper-slide"><img src="' +
+  //           top_img +
+  //           '" alt="" loading="lazy"/><div class="swiper-lazy-preloader"></div></div>';
+  //         let temp_html = `<div id="swiper-slide"class="swiper-slide"><img src="${top_img}" alt="" loading="lazy"><div class="swiper-lazy-preloader"></div></div>`;
+  //         swiper.appendSlide([temp_html2]);
+  //         // $('#swiper-wrapper').append(temp_html2);
+  //       }
+  //     });
+  // }
+  // movie();
+
   function movie() {
     // 영화진흥위원회 Open API 호출
     let base_url = 'https://image.tmdb.org/t/p/w500';
@@ -190,17 +216,26 @@ $(document).ready(function () {
       .then((res) => res.json())
       .then((data) => {
         let movies = data['results'];
+        let rand = Math.floor(Math.random() * 10);
+        let today = movies[rand];
+        let today_img = base_url + today['backdrop_path'];
+        let title = today['title'];
+        let overview = today['overview'];
+        $('#today').css('background-image', `url('${today_img}')`);
+        $('#today > h1').text(title);
+        $('#overview').text(overview);
+        // let temp_html=`<div id="carousel"class="carousel-item active"><img src="${today_img}" class="d-block w-100" alt="..."></div>`
+        // $('#car').append(temp_html);
 
         for (var i = 0; i < movies.length; i++) {
           let top_movie = movies[i];
           let top_img = base_url + top_movie['poster_path'];
+          // let top_today=base_url+top_movie['backdrop_path']
           let temp_html2 =
             '<div class="swiper-slide"><img src="' +
             top_img +
             '" alt="" loading="lazy"/><div class="swiper-lazy-preloader"></div></div>';
-          let temp_html = `<div id="swiper-slide"class="swiper-slide"><img src="${top_img}" alt="" loading="lazy"><div class="swiper-lazy-preloader"></div></div>`;
           swiper.appendSlide([temp_html2]);
-          // $('#swiper-wrapper').append(temp_html2);
         }
       });
   }
