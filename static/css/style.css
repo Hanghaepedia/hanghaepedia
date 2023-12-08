@@ -6,13 +6,17 @@
 * {
   font-family: 'Noto Sans KR', sans-serif;
 }
+body {
+  background-color: black;
+}
 
 /* ### 민지 작성 ### */
 .navbar {
-  position: sticky;
+  width: 100%;
+  position: absolute;
   top: 0;
-  background-color: white;
-  opacity: 90%;
+  /* background-color: black; */
+  /* opacity: 60%; */
   z-index: 999;
 }
 .logo-img {
@@ -25,7 +29,8 @@
   width: 320px;
 }
 .login-btn {
-  color: gray;
+  font-weight: bolder;
+  color: white;
 }
 .login-btn:hover {
   color: var(--hanghae);
@@ -35,7 +40,9 @@
   color: var(--hanghae);
 }
 .signup-btn {
-  border-color: gray;
+  font-weight: bolder;
+  color: white;
+  border-color: white;
 }
 .signup-btn:hover {
   color: white;
@@ -147,13 +154,14 @@
   margin-top: 100px;
 }
 .box-title {
+  color: white;
   text-align: center;
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 40px;
 }
 .box_container {
-  margin-bottom: 80px;
+  margin-bottom: 120px;
 }
 .slider {
   width: 1070px;
@@ -241,6 +249,7 @@
 }
 
 .gridTitle {
+  color: white;
   text-align: center;
   font-weight: bold;
 }
@@ -248,6 +257,7 @@
   border: none;
 }
 #cardGrid {
+  background-color: black;
   width: 300px;
 }
 
@@ -261,9 +271,6 @@
   color: black;
   margin-left: auto;
   font-size: 50px;
-}
-#carouselExample {
-  border: 1px solid white;
 }
 .today {
   background-position: center;

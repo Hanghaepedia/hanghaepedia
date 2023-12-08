@@ -169,6 +169,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //fetch 하기
 $(document).ready(function () {
+  // $(window).blind('scroll', function () {
+  //   console.log('scroll');
+  //   let navHeight = $(window).height() - 54;
+  //   if ($(window).scrollTop() > navHeight) {
+  //     $('nav').addClass('navbar-fixed');
+  //   } else {
+  //     $('nav').removeClass('navbar-fixed');
+  //   }
+  // });
+
   var swiper = new Swiper('.mySwiper', {
     slidesPerView: 4,
     centeredSlides: false,
