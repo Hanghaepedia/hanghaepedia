@@ -80,7 +80,7 @@ def api_login():
 #     token_receive = request.cookies.get('mytoken')
 
 #     # try / catch 문?
-#     # try 아래를 실행했다가, 에러가 있으면 except 구분으로 가란 얘기입니다.
+#     # try 아래를 실행했다가, 에러가 있으면 except 구분으로 가란 얘기입니다
 
 #     try:
 #         # token을 시크릿키로 디코딩합니다.
