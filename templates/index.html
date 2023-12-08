@@ -3,17 +3,956 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- og 태그 설정 -->
+    <meta property="og:title" content="항해피디아" />
+    <meta property="og:description" content="항해 18기 2조가 영화를 추천해드려요." />
+    <meta
+      property="og:image"
+      content="https://img.freepik.com/free-photo/sailing-ship-braves-stormy-seas-industrial-freight-generated-by-ai_188544-54418.jpg?size=626&ext=jpg&ga=GA1.1.1518270500.1698364800&semt=ais"
+    />
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <title>항해피디아</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="../static/js/jquery.cookie.js"></script>
   </head>
+
   <body>
-    <div>test</div>
+    <!-- navbar -->
+    <nav class="navbar">
+      <div class="container-fluid justify-content-end">
+        <!-- <div onclick="{{ url_for('home') }}">
+          <img class="logo-img" src="../static/logo.png" alt="" />
+        </div> -->
+        <div class="d-flex me-4">
+          <button
+            type="button"
+            class="btn me-2 login-btn"
+            id="login-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+          >
+            로그인
+          </button>
+          <button
+            type="button"
+            class="btn me-2 login-btn"
+            id="logout-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#logoutModal"
+          >
+            로그아웃
+          </button>
+          <button
+            type="button"
+            class="btn signup-btn"
+            id="signup-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#signupModal"
+          >
+            회원가입
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 오늘의 영화 (디즈니 플러스) -->
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div id="card1" class="carousel-item active" data-bs-interval="">
+          <img
+            src="https://cnbl-cdn.bamgrid.com/assets/d8ebe79fab0ab9ce57c40ae94a8ec3c62577b4c20dff791d509fa8c56d359e44/original"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption">
+            <img src="/static/logo_12.png" width="200px" alt="500000" />
+            <h3>비질란테</h3>
+            <p>
+              동네 건달에게 어머니를 잃은 피해자 김지용이 죄질에 비해 터무니 없이 가벼운 형량을 받고 그렇게 선처를
+              받고도 그 짓을 계속 저지르는 자들을 심판한다는, 사법불신과 사적제재에 관한 내용을 그린다
+            </p>
+          </div>
+        </div>
+        <div id="card2" class="carousel-item" data-bs-interval="500000">
+          <img
+            src="https://cnbl-cdn.bamgrid.com/assets/cc2869c19ed622cb9b74bfc3ac02a35c47bec6c3113e6ab99508763f062aa5a1/original"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption">
+            <img src="/static/logo_12.png" width="200px" alt="500000" />
+            <h3>사운드트랙#2</h3>
+            <p>
+              피아노 과외 선생님 ‘현서’가 뜨겁게 사랑하고 차갑게 헤어졌던 전연인과 바랜 꿈을 다시 잡아준 연하남과 함께
+              뮤직 프로젝트를 위해 한 집에 머물게 되면서 벌어지는 로맨스 드라마
+            </p>
+          </div>
+        </div>
+        <div id="card3" class="carousel-item" data-bs-interval="500000">
+          <img
+            src="https://cnbl-cdn.bamgrid.com/assets/f41cb58063cd8db1e296c36216e4b2cf76013504015f1b6777c8d9fd27c2e795/original"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption">
+            <img src="/static/logo_12.png" width="200px" alt="500000" />
+            <h3>드라마:밀수</h3>
+            <p>
+              평화롭던 바닷가 마을 군천에 화학 공장이 들어서면서 하루아침에 일자리를 잃은 해녀들. 먹고 살기 위한 방법을
+              찾던 승부사 춘자는 바다 속에 던진 물건을 건져 올리기만 하면 큰돈을 벌 수 있다는 밀수의 세계를 알게 되고
+              해녀들의 리더 진숙에게 솔깃한 제안을 한다.
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- 오늘의 영화 (랜덤) -->
+    <!-- <div id="today" class="today">
+      <img src="" alt="" />
+      <p>오늘의 영화</p>
+      <div id="today-content" class="today-context-box">
+        <h1>토르: 러브 앤 썬더</h1>
+        <p id="overview"></p>
+      </div>
+    </div> -->
+
+    <!-- 박스오피스 TOP 20 자동 슬라이드 -->
+    <div class="box_container boxoffice-slide">
+      <p class="box-title">- 박스오피스 TOP 20 -</p>
+      <div class="d-flex justify-content-center">
+        <div class="slider">
+          <div class="slides">
+            <div class="auto-slide active">
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231108_128%2F1699411327204OxmAK_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231020_277%2F1697766507454EFUvK_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231207_33%2F1701877811469ojHV9_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231129_200%2F1701235194103rgnJ1_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231130_162%2F1701308134241kbHHU_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+            </div>
+            <div class="auto-slide">
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231123_142%2F1700665316092vgiMJ_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231026_9%2F16983044100188P1Ff_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231206_124%2F1701838700978ar0oh_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20210915_104%2F1631681279096sdjNA_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231103_182%2F1698995150444NElMy_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+            </div>
+            <div class="auto-slide">
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231024_201%2F1698109935621RlE0o_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231105_129%2F1699165473913SyOEL_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231130_34%2F1701310445894SL4AX_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231123_73%2F1700744043568o7FSP_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231106_145%2F169919951043106bD7_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+            </div>
+            <div class="auto-slide">
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231113_43%2F1699851449023J0ooz_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231124_101%2F1700788833884051RD_PNG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20230927_32%2F1695790185763mU0aR_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20231107_36%2F1699329179978CKJCY_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+              <img
+                src="https://search.pstatic.net/common?type=f&size=206x290&quality=100&direct=true&src=https%3A%2F%2Fs.pstatic.net%2Fmovie.phinf%2F20221104_258%2F1667527490266scSO3_JPEG%2Fmovie_image.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="slide-manual">
+            <input type="button" for="btn1" class="manual-btn" />
+            <input type="button" for="btn2" class="manual-btn" />
+            <input type="button" for="btn3" class="manual-btn" />
+            <input type="button" for="btn4" class="manual-btn" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 추천 영화 20선 -->
+    <p class="box-title">- 항해피디아 추천 영화 -</p>
+    <div class="box_container d-flex justify-content-center">
+      <div class="box_div">
+        <div class="title_div">
+          <!--박스오피스 타이틀-->
+        </div>
+        <div class="swiper mySwiper">
+          <div id="swiper-wrapper" class="swiper-wrapper"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 메인 컬렉션 -->
+    <div id="carouselExample" class="box_container carousel slide">
+      <div class="carousel-inner">
+        <!-- 캐러셀1 -->
+        <div id="carouselStlye1" class="carousel-item active">
+          <div class="card-group">
+            <!-- 그리드1 -->
+            <div id="cardGrid" class="card mx-1">
+              <!-- 1당 24px g=gap x축 y축 -->
+              <p class="gridTitle">항해 최고 인기작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/svtqFaUlHtXXRptTh4Golg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMmhxYzNkcGJuWnNlSFJ6YzNVNVlYZGlibkZrSW4wLlppTmVPY1BLVzRTY1NrNjVPWVJwemkyUG0tMUNIRnVMOGxLUTJucUprclk"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/VJHST5y_kTwPJ5LqN769VA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5ETXpOREkyTWpVMU1UZ3dOekUzT1RZaWZRLjFlQUtIdzM4RlY5aWtWYUpSdjZqU1FnTW52dy10dDJfcUVFa1VkWklIQ1E"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/uI7E1mSfEqSOVwH7urfVjA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM1F4TnpSeVpYTm9lWFYyZUhWc00zbHZjelpxSW4wLmRicmdMTHlLeHBJQlpZeGczOGxNbFN1bHZhYTBmZ0M5d3hvU0wxMXJSODg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/Acmtoi4ub8em1wioVejbPg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM1l6WTNKdE1YTjZibmR2ZEhoeWRqQnNiR3AzSW4wLlV4UDdsX0lyRi1tQkR0UVpVdnk3MlA0NTVKOENBWkJrQWNLZlE4U2NZRnM"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 그리드2 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">토론토 영화제 관객상 수상작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/18iO4ppQISHkczx5h580hg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk9UYzNNemd3TkRBMU5Ea3lNREl6TVRJaWZRLldyakthejZzM3JNbTJ4ZHNGb1VKYy1VRnAzWC1lUmZDakIzSFhJZl94QWs"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/5cb2NLIrTQ6b36-KYdZMmQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56azFNekF4TWpZM05qTTFOVFExTURJaWZRLk9PUEExUmZfUEZjeFRkZGhqeFNyUHgzaEp6blBSakoyTW5xODV4Q0FTRUk"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/4B-jCmLsMAl6PtmWMwsNVg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5EVTBNRFF6TURVMU5qYzNOVGc1TlRnaWZRLjB6WjNnWUhtV3I4OEZ1ZVJiWWFKWk53ZDNqN1F1UGpfQndoRzJGWXRhZzA"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/6x0sFQ4I5JiPchuf5Rfnqw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk1UWTVPRGMzTmpFM01USTFNREk1TWpVaWZRLjdOUmNBWXNvemNiZktFWkphSW9Vak1fWHNfc3lvN2x0RU1zVGFocDRRMWs"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 그리드3 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">아카데미 작품상 수상작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/PQXJGJhML_BtDM-jZEvi6w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk9UVTNNalE0TlRBMk9UUTNPRGd6TURVaWZRLkh1SkFRNTk3V3I1ajN4UHJETFlWRjhja2xGUEc5TmY3UkRmbWVkTmJsVjg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/rECO8bGWFiJ8QIzFFHcFzw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5URTBOelV5TWpnM016TXpNamczT0RnaWZRLjlBMmU0R0g3MDIzMEFxb2ptYnhqZmt6Ry1IeTgxNGxFaTAxUHVsQjFuNWs"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/6x0sFQ4I5JiPchuf5Rfnqw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk1UWTVPRGMzTmpFM01USTFNREk1TWpVaWZRLjdOUmNBWXNvemNiZktFWkphSW9Vak1fWHNfc3lvN2x0RU1zVGFocDRRMWs"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/4fXGcnpr8CS5f2l3jE2Z-Q.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2gzY1d0aWEyeHRkbkJsZG5sNllXWjFabUp5SW4wLmMwUjdILXByVzhFVGhESDZQckNpc2M0RkhGOW1mdl9MRnE3RGswU1VRcUU"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 그리드4 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">항해피디아 별점 TOP</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/4yUeddRD-5t5w-Moil8w-g.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk1qUXlOVGcwTnpZNE1qUTVOemd6TURBaWZRLmp2N3BBcjlmQVJxc0h4ZmlXVWRMRWJrdm9FUXlyR2hsOHRDbzJpQ1RKOTQ"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/eeZq5Le8-h4FpqZfNbZG0w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMmd6TjJ0b2JIZDJjbUZ5Tm5aMlpuRnBkMnRwSW4wLlg5NWN2bWFqS1JhUTRrR1dYVjBtNmcxWEQ3b0Q2Ynptel96eUVFYlhkYjg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/lz29guoZbg_Q6ezE3_-uqg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2RzZGpGaGNtRjRZMjk2ZEdneWJtUjBPR3MwSW4wLnRmVlRGc2xIWjBMQnVXOWNWTlFXRGpzbUFJTzgyZzNQVTJvWm1oT1ZzNzQ"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/biQK-S4mE1O5_3QvabOjAg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2wzY1hGMU9YVjZOVFY0T0hsemJqUnFkWEJwSW4wLjdlVmVnRDVDaW91dHVHTkpyTEMycEl1SE5ib1RiQm5ZOVJac0pwOE9oOTA"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 캐러셀2 -->
+        <div id="carouselStlye2" class="carousel-item">
+          <div class="card-group">
+            <!-- 그리드1 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">아카데미 남우주연상 수상작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/pavTO61xo6DUuklM1KNVSg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56a3lPVFl6TWpJMk5qRTBORGsyT0RJaWZRLnEwNVI3c2JjY3pFQlNMSWJJNXJuZk02Y24xS19xQmFXcFR0b2k2SWpPQk0"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/SaaxEmAovZIh5yZ7k8gQyQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5EWTJNek0zT1RZMk1USTNPREE0TlRnaWZRLmVFb1IzUlV0WDB3c2V0NDdsQ2ZwQVZaci1EdHlSMVN0dDctSFhEUWlkcGs"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/nC7GS5YyZDyscm2gv6AMnA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk1UWTBPREl6TURjeU5EYzROVFk0TURRaWZRLjBTaEtZLUZna2lNMTQzNEdLQXFCUy1MSFEwUWVuVS0tWTdjb0lkYVVHdHc"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/9LwNwr1_qh2ie9OUN0NjtA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMnMzZUhkeVluWm9hMmw2Y25Rd2RHVnNlbXh5SW4wLjlfQnNPSENvN3ZOdmFIR2hXZ21nNmR2WGp4Ylp5TktsbkRZeFJZM0VzOVk"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 그리드2 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">아카데미 여우주연상 수상작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/PQXJGJhML_BtDM-jZEvi6w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk9UVTNNalE0TlRBMk9UUTNPRGd6TURVaWZRLkh1SkFRNTk3V3I1ajN4UHJETFlWRjhja2xGUEc5TmY3UkRmbWVkTmJsVjg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/blFldubd_OddO0a1XEPrNA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5EZzBOalkwTWpFNE1EazJOREU1T0RFaWZRLmVUNVlIdS04OG9obXBRcGZ4ZlJZb0VrREdqUGVOcUp2RGJCZHlIeDEta2c"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/6x0sFQ4I5JiPchuf5Rfnqw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk1UWTVPRGMzTmpFM01USTFNREk1TWpVaWZRLjdOUmNBWXNvemNiZktFWkphSW9Vak1fWHNfc3lvN2x0RU1zVGFocDRRMWs"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/rOcC3w-qMG5ChXxHJdoATA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMmw2ZEdkNmNXNXVZMlo2YVhwcWRXcGpjV3h4SW4wLmxPV2pSaTB4Y0F6QjRYSkNiRkdQMENOcGt2X0YzM0llMm9ObzdOeTJZX3c"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 그리드3 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">아카데미 촬영상 수상작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/HSGFAk6lLrbZjBPzBS3wiw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5qY3lNRE16TmpnMk1qUTFORFl6TURNaWZRLkxyV1VJdTZBZktjNVBaWVdJa3RsdHRXc3JkOXRKVnViSjdQcGRlNHpvQXM"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/LORpaHa1ccOKSEB_1aS6SA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk16STNPVEU0TWprek1ERXpOVGd5TkRraWZRLkcxY2d5eFQzY193WmhINm5wUkdZTFFKRmJDbHVoai1sME9wUDNMMFV0aUE"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/uYcUVl2E_CKhY-zSw1lwjw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMjA0TVRkc01YSmthemcwTjJoNGJISTJabkozSW4wLkVVRFdHclZvdHRXQXpEZEZ5YXpWcUFycXBfc0daRnV3SWVZX1hCS1hXMXM"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/TAu7PlcjGaGsyRJnTCxjWg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2h1ZVRodGN6azNjMlprWlhCcE9HSmtaV2xuSW4wLmtJNktRazFyajB3bEV1eXdtbnJDWTdlOHVNdFRWY3NvMkR0TnNUTVdJNk0"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 그리드4 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">아카데미 각본상 수상작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/PQXJGJhML_BtDM-jZEvi6w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk9UVTNNalE0TlRBMk9UUTNPRGd6TURVaWZRLkh1SkFRNTk3V3I1ajN4UHJETFlWRjhja2xGUEc5TmY3UkRmbWVkTmJsVjg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/4B-jCmLsMAl6PtmWMwsNVg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5EVTBNRFF6TURVMU5qYzNOVGc1TlRnaWZRLjB6WjNnWUhtV3I4OEZ1ZVJiWWFKWk53ZDNqN1F1UGpfQndoRzJGWXRhZzA"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/7L8hfh227za7Em3Y532CYA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk1URTFOREU0TWpRNU1Ua3lOVFF4T1RVaWZRLldrVi1ITzJySXZKU2ZUVXlYMHhwLWk0LWxBWHg4YnhIOXNjUlVKUlhmMTQ"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/4fXGcnpr8CS5f2l3jE2Z-Q.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2gzY1d0aWEyeHRkbkJsZG5sNllXWjFabUp5SW4wLmMwUjdILXByVzhFVGhESDZQckNpc2M0RkhGOW1mdl9MRnE3RGswU1VRcUU"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 캐러셀3 -->
+        <div id="carouselStlye3" class="carousel-item">
+          <div class="card-group">
+            <!-- 그리드1 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">아카데미 시각효과상 수상작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/FU0IZweqlkNZbfpm4TF8CA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56QTFORFkzTXpreU1ERTFNREUyTURFaWZRLkpRTTFMRWRPNmdsQ1dkcWlubVp0a0EzZzlzeHpEcXN0QnpRU0tuMWZZbkk"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/LORpaHa1ccOKSEB_1aS6SA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk16STNPVEU0TWprek1ERXpOVGd5TkRraWZRLkcxY2d5eFQzY193WmhINm5wUkdZTFFKRmJDbHVoai1sME9wUDNMMFV0aUE"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/HjSZvvIMvxvCc8AC-pU9vw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMlZqWTJkMmNEaDVZV0pxZGpab1pIRndjMlZySW4wLlNBVl9kcmY0MXhUUjZvNi1nbV9ic2h0cnU0VkdMUVZQaFp6SGtQbGdDVnM"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/TAu7PlcjGaGsyRJnTCxjWg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM2h1ZVRodGN6azNjMlprWlhCcE9HSmtaV2xuSW4wLmtJNktRazFyajB3bEV1eXdtbnJDWTdlOHVNdFRWY3NvMkR0TnNUTVdJNk0"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 그리드2 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">아카데미 음향상 수상작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/YUwgLWf5GjrzQYMDL6wfug.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5USTJPREUzTXpNeE56SXlNVEE1TmpjaWZRLi1YMnQ4bmxvaTI3U0RDMXZBaVJqSEdXWTFsdEREZjVIbTg1NWhYVHh5M1U"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/LORpaHa1ccOKSEB_1aS6SA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk16STNPVEU0TWprek1ERXpOVGd5TkRraWZRLkcxY2d5eFQzY193WmhINm5wUkdZTFFKRmJDbHVoai1sME9wUDNMMFV0aUE"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/WKqTixTRxztbdisKojit5g.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk1qSXhPRGM1TkRrek9ERXpNelV5TXpraWZRLmZlSGlUU0hSMS1FallfRHNid2VnN1RxQ0VzVFRJYTZSV3ZlZl9TWG1Pdjg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/CFvne7eSBXp_83tbRnTvnQ.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMlZrWjNkbVozVnJjREExZUhnemFqZDNZV3R3SW4wLk9nZFRzc2xta1loT2NoeE52czA2VFRKUmxUWEJQcWs5Vy1SbjU0eEZORTA"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 그리드3 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">아카데미 장편 애니메이션상 수상작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/omlFspsI2yfUmsBPVdhrPA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5qZzBPRGs0T0RFek16WXdNREEyT1RraWZRLktXRkdQMnRraS1RVS1JRGN3bHlKYUNqcGk0S2o2dDBRTWttWURhZjdzQWc"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/a7h9vgix4sqfy8_JZvji2w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk16YzFOVGd4TXpJek5UYzNNVEE0TnpVaWZRLjBjUXNLN3JtQ3o1cnhpY0JaQ0tZWVNLRTFGZlpENzNpSlZzVkowc2dxMFE"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/mW4HwOpdLXGi-mpKrRIV3A.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk1EazVPRFV5TURrd056STNOVFV4TWpjaWZRLnI3cW0wZzhlU3NvYmwwWk9sZVh2VHF6QXZMVWV3TDZUZEc1QzAydF8tLTA"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/XsZSX-2QKku7t-5cVPmp8g.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0psYXpCemNIcG1lRzVoWnpWd2NHcGhOMngxSW4wLjAyOGpLblhTakNaRVJtbnh0UE9SZXFFRW5rVC15WFlCQ01Md3Z3X1VRLTg"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 그리드4 -->
+            <div id="cardGrid" class="card mx-1">
+              <p class="gridTitle">아카데미 분장상 수상작</p>
+              <div class="row row-cols-1 row-cols-md-2 gy-2 gx-2">
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/pavTO61xo6DUuklM1KNVSg.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk56a3lPVFl6TWpJMk5qRTBORGsyT0RJaWZRLnEwNVI3c2JjY3pFQlNMSWJJNXJuZk02Y24xS19xQmFXcFR0b2k2SWpPQk0"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/blFldubd_OddO0a1XEPrNA.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXlMM04wYjNKbEwybHRZV2RsTHpFMk5EZzBOalkwTWpFNE1EazJOREU1T0RFaWZRLmVUNVlIdS04OG9obXBRcGZ4ZlJZb0VrREdqUGVOcUp2RGJCZHlIeDEta2c"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/Ndz-WmcrAWEZPdC32UIOUw.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMM0ZoZERkeWNHeGxjRzh4TjI1clpuSnljbkI1SW4wLnNQUzZTZVFLNmtoM1VIQmoyRGRCSUFhU1ZWTHdlc1dFTFJWRXJKbDRWbGM"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img
+                      src="https://an2-img.amz.wtchn.net/image/v2/5P9gHNQMvtsSMuIPkKNz3w.jpg?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1SZk5Ea3dlRGN3TUhFNE1DSmRMQ0p3SWpvaUwzWXhMMjl0Y21weFluRnRjR050Wlhsa09ERnJhR1F6SW4wLkJEYzVabkl2RTltdGZLaWpwekVMLWZnNE5yc0RYRVVtSTNuQ19jZVFobWM"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 캐러셀 버튼 -->
+      <div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span id="prevBtn" class="material-symbols-outlined"> arrow_circle_left </span>
+        </button>
+        <button
+          id=""
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span id="nextBtn" class="material-symbols-outlined"> arrow_circle_right </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="container">
+        <footer class="py-3">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2">곽민지</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">박우혁</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">박재윤</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2">이대규</a></li>
+          </ul>
+          <p class="nav-link text-center">© 2023 Company, 항해피디아 Inc</p>
+        </footer>
+      </div>
+    </div>
+
+    <!-- 로그인 모달 -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="m-header p-3 mt-4">
+            <img class="modal-logo-img" src="../static/logo.png" alt="" />
+            <h1 class="modal-title text-center fs-4 mt-4" id="loginModalLabel">로그인</h1>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  id="login-user-id"
+                  class="input-form"
+                  placeholder="아이디"
+                  onkeyup="inputValChk('userId', 'login-user-id')"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  id="login-user-pw"
+                  class="input-form"
+                  placeholder="비밀번호"
+                  onkeyup="inputValChk('password', 'login-user-pw')"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="m-footer">
+            <button type="button" class="btn-hanghae" onclick="login()">로그인</button>
+            <div class="s-msg">
+              계정이 없으신가요?
+              <button class="s-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signupModal">
+                회원가입
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 회원가입 모달 -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="m-header p-3 mt-4">
+            <img class="modal-logo-img" src="../static/logo.png" alt="" />
+            <h1 class="modal-title text-center fs-4 mt-4" id="signupModalLabel">회원가입</h1>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  id="sign-user-name"
+                  class="input-form"
+                  placeholder="이름"
+                  onkeyup="inputValChk('userName', 'sign-user-name')"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  id="sign-user-id"
+                  class="input-form"
+                  placeholder="아이디"
+                  onkeyup="inputValChk('userId', 'sign-user-id')"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  id="sign-password"
+                  class="input-form"
+                  placeholder="비밀번호"
+                  onkeyup="inputValChk('password', 'sign-password')"
+                />
+              </div>
+              <div class="mb-3">
+                <input type="password" id="password-check" class="input-form" placeholder="비밀번호 확인" />
+              </div>
+            </form>
+          </div>
+          <div class="m-footer">
+            <button type="button" class="btn-hanghae" onclick="signup()">회원가입</button>
+            <div class="s-msg">
+              이미 가입하셨나요?
+              <button class="s-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
+                로그인
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 로그아웃 모달 -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="alert-msg">알림</div>
+            <div class="logout-check">로그아웃 하시겠어요?</div>
+          </div>
+          <div class="d-flex justify-content-center p-2 mb-3">
+            <button type="button" class="logout-modal-btn close me-2" data-bs-dismiss="modal">닫기</button>
+            <button type="button" class="logout-modal-btn me-2" onclick="logout()">확인</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

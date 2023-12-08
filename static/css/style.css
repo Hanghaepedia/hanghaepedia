@@ -1,0 +1,353 @@
+/* 항해피디아 공통 색상 */
+:root {
+  --hanghae: #ff0558;
+}
+
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+body {
+  background-color: black;
+}
+
+/* ### 민지 작성 ### */
+.navbar {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  /* background-color: black; */
+  /* opacity: 60%; */
+  z-index: 999;
+}
+.logo-img {
+  width: 151px;
+  height: auto;
+}
+.modal-logo-img {
+  display: block;
+  margin: auto;
+  width: 320px;
+}
+.login-btn {
+  font-weight: bolder;
+  color: white;
+}
+.login-btn:hover {
+  color: var(--hanghae);
+}
+.login-btn:active {
+  border-color: rgba(0, 0, 0, 0);
+  color: var(--hanghae);
+}
+.signup-btn {
+  font-weight: bolder;
+  color: white;
+  border-color: white;
+}
+.signup-btn:hover {
+  color: white;
+  background-color: var(--hanghae);
+}
+.input-form {
+  box-sizing: border-box;
+  background: rgb(245, 245, 245);
+  width: 100%;
+  height: 44px;
+  padding: 0px 12px;
+  border-radius: 6px;
+  border: none;
+}
+.input-form:focus {
+  outline: none;
+}
+.input-form-error {
+  background: rgb(252, 241, 240);
+  border: 1px solid rgb(238, 145, 136);
+}
+.m-footer {
+  padding: 1rem;
+}
+.s-msg {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 20px;
+  color: rgb(140, 140, 140);
+  text-align: center;
+  margin: 20px 0px 14px;
+}
+.s-btn {
+  background: none;
+  padding: 0px;
+  border: none;
+  margin: 0px;
+  cursor: pointer;
+  color: rgb(255, 47, 110);
+}
+.btn-hanghae {
+  width: 100%;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  background: rgb(255, 47, 110);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.7px;
+  line-height: 22px;
+  width: 100%;
+  height: 44px;
+  border-radius: 6px;
+}
+.btn-hanghae:hover {
+  background-color: var(--hanghae);
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+.alert-msg {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 22px;
+}
+.logout-check {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 20px;
+  white-space: pre-wrap;
+  padding: 0px 0px 24px;
+  border-bottom: 1px solid rgb(210, 210, 210);
+  margin: 8px 0px 0px;
+  word-break: break-all;
+}
+.logout-modal-btn {
+  background: none;
+  padding: 0px;
+  margin: 0px;
+  cursor: pointer;
+  flex: 1 1 0%;
+  color: rgb(255, 47, 110);
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.7px;
+  line-height: 22px;
+  border: none;
+}
+.close {
+  border-style: none solid none none;
+  border-top-width: initial;
+  border-bottom-width: initial;
+  border-left-width: initial;
+  border-image: initial;
+  border-right-width: 1px;
+  border-color: rgb(210, 210, 210) !important;
+}
+
+/* ### 재윤님 작성 ### */
+.boxoffice-slide {
+  margin-top: 100px;
+}
+.box-title {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.box_container {
+  margin-bottom: 120px;
+}
+.slider {
+  width: 1070px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slides {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.auto-slide {
+  width: 20%;
+  display: flex;
+  margin-right: 100%;
+  transition: 2s;
+}
+
+.auto-slide > img {
+  width: 600%;
+  height: 100%;
+  margin-right: 10px;
+}
+
+.slide-manual {
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.manual-btn {
+  width: 200px;
+  background-color: rgb(200, 200, 200);
+  border: 1px solid rgb(180, 180, 180);
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.manual-btn:not(:last-child) {
+  margin-right: 10px;
+}
+
+.manual-btn:hover {
+  background-color: rgb(50, 50, 50);
+}
+
+/* ### 우혁님 작성 ### */
+.box_div {
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  height: 500px;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-right: 2px;
+}
+#carouselExampleIndicators {
+  display: flex;
+  height: 500px;
+}
+
+.gridTitle {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+.card {
+  border: none;
+}
+#cardGrid {
+  background-color: black;
+  width: 300px;
+}
+
+#prevBtn {
+  color: black;
+  margin-right: auto;
+  font-size: 50px;
+}
+
+#nextBtn {
+  color: black;
+  margin-left: auto;
+  font-size: 50px;
+}
+.today {
+  background-position: center;
+  background-size: cover;
+  height: 600px;
+  padding: 50px;
+  font-size: 32px;
+  image-rendering: -moz-crisp-edges; /* firefox */
+  image-rendering: -o-crisp-edges; /* opera */
+  image-rendering: -webkit-optimize-contrast; /* chrome(비표준) */
+  image-rendering: crisp-edges;
+}
+.today > p {
+  font-size: 40px;
+  color: white;
+  margin-bottom: 5px;
+}
+.today-context-box > h1 {
+  margin-top: 10px;
+  font-size: 60px;
+  color: white;
+  font-weight: bold;
+}
+.today-context-box {
+  margin-top: 30px;
+}
+#overview {
+  color: white;
+  margin-top: 50px;
+  font-size: 18px;
+  width: 35vw;
+  line-height: 160%;
+  text-overflow: ellipsis;
+}
+.footer {
+  bottom: 0;
+  background-color: #3a3b3c;
+}
+.nav-link {
+  color: white;
+}
+.carousel-inner {
+  display: flex;
+}
+.carousel-inner > p {
+  font-size: 30px;
+  color: white;
+  background-color: transparent;
+  font-weight: bold;
+}
+.carousel-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 70px;
+  margin-right: 70px;
+  left: 10%;
+}
+.carousel-caption > img {
+  display: flex;
+  width: 280px;
+  margin-top: 60px;
+}
+.carousel-caption > h3 {
+  text-align: left;
+  font-size: 70px;
+  margin-top: 70px;
+}
+.carousel-caption > p {
+  text-align: left;
+  font-size: 17px;
+  width: 390px;
+  text-overflow: ellipsis;
+  margin-top: 50px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 10%;
+}
