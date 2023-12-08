@@ -94,3 +94,12 @@
   height: 100px;
   text-overflow: ellipsis;
 }
+.carousel-inner{
+  display: flex;
+}
+.carousel-inner>p{
+  font-size: 30px;
+  color: white;
+  background-color: transparent;
+  font-weight: bold;
+}
