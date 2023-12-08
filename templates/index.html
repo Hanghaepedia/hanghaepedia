@@ -67,129 +67,85 @@
       </div>
     </nav>
 
-    <!-- 로그인 모달 -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="m-header p-3 mt-4">
-            <img class="modal-logo-img" src="../static/logo.png" alt="" />
-            <h1 class="modal-title text-center fs-4 mt-4" id="loginModalLabel">로그인</h1>
+    <!-- 오늘의 영화 (디즈니 플러스) -->
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div id="card1" class="carousel-item active" data-bs-interval="">
+          <img
+            src="https://cnbl-cdn.bamgrid.com/assets/d8ebe79fab0ab9ce57c40ae94a8ec3c62577b4c20dff791d509fa8c56d359e44/original"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption">
+            <img src="/static/logo_12.png" width="200px" alt="500000" />
+            <h3>비질란테</h3>
+            <p>
+              동네 건달에게 어머니를 잃은 피해자 김지용이 죄질에 비해 터무니 없이 가벼운 형량을 받고 그렇게 선처를
+              받고도 그 짓을 계속 저지르는 자들을 심판한다는, 사법불신과 사적제재에 관한 내용을 그린다
+            </p>
           </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  id="login-user-id"
-                  class="input-form"
-                  placeholder="아이디"
-                  onkeyup="inputValChk('userId', 'login-user-id')"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="password"
-                  id="login-user-pw"
-                  class="input-form"
-                  placeholder="비밀번호"
-                  onkeyup="inputValChk('password', 'login-user-pw')"
-                />
-              </div>
-            </form>
+        </div>
+        <div id="card2" class="carousel-item" data-bs-interval="500000">
+          <img
+            src="https://cnbl-cdn.bamgrid.com/assets/cc2869c19ed622cb9b74bfc3ac02a35c47bec6c3113e6ab99508763f062aa5a1/original"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption">
+            <img src="/static/logo_12.png" width="200px" alt="500000" />
+            <h3>사운드트랙#2</h3>
+            <p>
+              피아노 과외 선생님 ‘현서’가 뜨겁게 사랑하고 차갑게 헤어졌던 전연인과 바랜 꿈을 다시 잡아준 연하남과 함께
+              뮤직 프로젝트를 위해 한 집에 머물게 되면서 벌어지는 로맨스 드라마
+            </p>
           </div>
-          <div class="m-footer">
-            <button type="button" class="btn-hanghae" onclick="login()">로그인</button>
-            <div class="s-msg">
-              계정이 없으신가요?
-              <button class="s-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signupModal">
-                회원가입
-              </button>
-            </div>
+        </div>
+        <div id="card3" class="carousel-item" data-bs-interval="500000">
+          <img
+            src="https://cnbl-cdn.bamgrid.com/assets/f41cb58063cd8db1e296c36216e4b2cf76013504015f1b6777c8d9fd27c2e795/original"
+            class="d-block w-100"
+            alt="..."
+          />
+          <div class="carousel-caption">
+            <img src="/static/logo_12.png" width="200px" alt="500000" />
+            <h3>드라마:밀수</h3>
+            <p>
+              평화롭던 바닷가 마을 군천에 화학 공장이 들어서면서 하루아침에 일자리를 잃은 해녀들. 먹고 살기 위한 방법을
+              찾던 승부사 춘자는 바다 속에 던진 물건을 건져 올리기만 하면 큰돈을 벌 수 있다는 밀수의 세계를 알게 되고
+              해녀들의 리더 진숙에게 솔깃한 제안을 한다.
+            </p>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- 회원가입 모달 -->
-    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="m-header p-3 mt-4">
-            <img class="modal-logo-img" src="../static/logo.png" alt="" />
-            <h1 class="modal-title text-center fs-4 mt-4" id="signupModalLabel">회원가입</h1>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  id="sign-user-name"
-                  class="input-form"
-                  placeholder="이름"
-                  onkeyup="inputValChk('userName', 'sign-user-name')"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  id="sign-user-id"
-                  class="input-form"
-                  placeholder="아이디"
-                  onkeyup="inputValChk('userId', 'sign-user-id')"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="password"
-                  id="sign-password"
-                  class="input-form"
-                  placeholder="비밀번호"
-                  onkeyup="inputValChk('password', 'sign-password')"
-                />
-              </div>
-              <div class="mb-3">
-                <input type="password" id="password-check" class="input-form" placeholder="비밀번호 확인" />
-              </div>
-            </form>
-          </div>
-          <div class="m-footer">
-            <button type="button" class="btn-hanghae" onclick="signup()">회원가입</button>
-            <div class="s-msg">
-              이미 가입하셨나요?
-              <button class="s-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
-                로그인
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 로그아웃 모달 -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div class="alert-msg">알림</div>
-            <div class="logout-check">로그아웃 하시겠어요?</div>
-          </div>
-          <div class="d-flex justify-content-center p-2 mb-3">
-            <button type="button" class="logout-modal-btn close me-2" data-bs-dismiss="modal">닫기</button>
-            <button type="button" class="logout-modal-btn me-2" onclick="logout()">확인</button>
-          </div>
-        </div>
-      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleInterval"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
 
     <!-- 오늘의 영화 (랜덤) -->
-    <div id="today" class="today">
+    <!-- <div id="today" class="today">
       <img src="" alt="" />
       <p>오늘의 영화</p>
       <div id="today-content" class="today-context-box">
         <h1>토르: 러브 앤 썬더</h1>
         <p id="overview"></p>
       </div>
-    </div>
+    </div> -->
 
     <!-- 박스오피스 TOP 20 자동 슬라이드 -->
     <div class="box_container boxoffice-slide">
@@ -311,7 +267,6 @@
     </div>
 
     <!-- 메인 컬렉션 -->
-    <div class="row"></div>
     <div id="carouselExample" class="box_container carousel slide">
       <div class="carousel-inner">
         <!-- 캐러셀1 -->
@@ -847,12 +802,20 @@
       </div>
 
       <!-- 캐러셀 버튼 -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span id="prevBtn" class="material-symbols-outlined"> arrow_circle_left </span>
-      </button>
-      <button id="" class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span id="nextBtn" class="material-symbols-outlined"> arrow_circle_right </span>
-      </button>
+      <div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span id="prevBtn" class="material-symbols-outlined"> arrow_circle_left </span>
+        </button>
+        <button
+          id=""
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span id="nextBtn" class="material-symbols-outlined"> arrow_circle_right </span>
+        </button>
+      </div>
     </div>
 
     <!-- footer -->
@@ -867,6 +830,120 @@
           </ul>
           <p class="nav-link text-center">© 2023 Company, 항해피디아 Inc</p>
         </footer>
+      </div>
+    </div>
+
+    <!-- 로그인 모달 -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="m-header p-3 mt-4">
+            <img class="modal-logo-img" src="../static/logo.png" alt="" />
+            <h1 class="modal-title text-center fs-4 mt-4" id="loginModalLabel">로그인</h1>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  id="login-user-id"
+                  class="input-form"
+                  placeholder="아이디"
+                  onkeyup="inputValChk('userId', 'login-user-id')"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  id="login-user-pw"
+                  class="input-form"
+                  placeholder="비밀번호"
+                  onkeyup="inputValChk('password', 'login-user-pw')"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="m-footer">
+            <button type="button" class="btn-hanghae" onclick="login()">로그인</button>
+            <div class="s-msg">
+              계정이 없으신가요?
+              <button class="s-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signupModal">
+                회원가입
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 회원가입 모달 -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="m-header p-3 mt-4">
+            <img class="modal-logo-img" src="../static/logo.png" alt="" />
+            <h1 class="modal-title text-center fs-4 mt-4" id="signupModalLabel">회원가입</h1>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  id="sign-user-name"
+                  class="input-form"
+                  placeholder="이름"
+                  onkeyup="inputValChk('userName', 'sign-user-name')"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  id="sign-user-id"
+                  class="input-form"
+                  placeholder="아이디"
+                  onkeyup="inputValChk('userId', 'sign-user-id')"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  id="sign-password"
+                  class="input-form"
+                  placeholder="비밀번호"
+                  onkeyup="inputValChk('password', 'sign-password')"
+                />
+              </div>
+              <div class="mb-3">
+                <input type="password" id="password-check" class="input-form" placeholder="비밀번호 확인" />
+              </div>
+            </form>
+          </div>
+          <div class="m-footer">
+            <button type="button" class="btn-hanghae" onclick="signup()">회원가입</button>
+            <div class="s-msg">
+              이미 가입하셨나요?
+              <button class="s-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#loginModal">
+                로그인
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 로그아웃 모달 -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="alert-msg">알림</div>
+            <div class="logout-check">로그아웃 하시겠어요?</div>
+          </div>
+          <div class="d-flex justify-content-center p-2 mb-3">
+            <button type="button" class="logout-modal-btn close me-2" data-bs-dismiss="modal">닫기</button>
+            <button type="button" class="logout-modal-btn me-2" onclick="logout()">확인</button>
+          </div>
+        </div>
       </div>
     </div>
 
