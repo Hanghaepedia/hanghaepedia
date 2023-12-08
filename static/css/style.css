@@ -351,3 +351,28 @@ body {
 .carousel-control-next {
   width: 10%;
 }
+.brief {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+}
+.br_text {
+  padding-top: 130px;
+}
+.br_text > h3 {
+  font-size: 50px;
+  font-weight: bolder;
+}
+.br_text > p {
+  margin-top: 50px;
+  font-size: 20px;
+  width: 600px;
+  text-align: left;
+  line-height: 180%;
+}
+
+.br-img {
+  margin-left: 100px;
+  width: 250px;
+}
