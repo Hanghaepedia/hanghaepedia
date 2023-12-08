@@ -3,8 +3,14 @@
   --hanghae: #ff0558;
 }
 
+* {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 /* ### 민지 작성 ### */
 .navbar {
+  position: sticky;
+  top: 0;
   background-color: white;
   opacity: 90%;
 }
@@ -256,27 +262,34 @@
   border: 1px solid white;
 }
 .today {
-  background-image: url('https://image.tmdb.org/t/p/w500/p1F51Lvj3sMopG948F5HsBbl43C.jpg');
   background-position: center;
   background-size: cover;
-
-  height: 450px;
-
+  height: 600px;
   padding: 50px;
   font-size: 32px;
+  image-rendering: -moz-crisp-edges; /* firefox */
+  image-rendering: -o-crisp-edges; /* opera */
+  image-rendering: -webkit-optimize-contrast; /* chrome(비표준) */
+  image-rendering: crisp-edges;
 }
 .today > p {
   font-size: 40px;
   color: white;
   margin-bottom: 5px;
 }
-.today > h1 {
+.today-context-box > h1 {
   margin-top: 10px;
   font-size: 60px;
   color: white;
   font-weight: bold;
 }
+.today-context-box {
+  margin-top: 30px;
+}
 #overview {
-  font-size: 15px;
-  width: 200px;
+  color: white;
+  margin-top: 50px;
+  font-size: 18px;
+  width: 35vw;
+  line-height: 160%;
 }

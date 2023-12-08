@@ -17,6 +17,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet" />
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
     <title>항해피디아</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -26,7 +30,7 @@
 
   <body>
     <!-- navbar -->
-    <nav class="navbar border-bottom fixed-top">
+    <nav class="navbar border-bottom">
       <div class="container-fluid">
         <div onclick="{{ url_for('home') }}">
           <img class="logo-img" src="../static/logo.png" alt="" />
@@ -180,9 +184,11 @@
     <!-- 오늘의 영화 (랜덤) -->
     <div id="today" class="today">
       <img src="" alt="" />
-      <p>오늘의 영화:</p>
-      <h1>토르: 러브 앤 썬더-</h1>
-      <p id="overview"></p>
+      <p>오늘의 영화</p>
+      <div id="today-content" class="today-context-box">
+        <h1>토르: 러브 앤 썬더</h1>
+        <p id="overview"></p>
+      </div>
     </div>
 
     <!-- 박스오피스 TOP 20 자동 슬라이드 -->
