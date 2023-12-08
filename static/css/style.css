@@ -128,3 +128,32 @@
   text-overflow: ellipsis;
   margin-top: 30px;
 }
+.brief{
+  
+  background-color: black;
+  color: black;
+}
+.br_text{
+  position: absolute;
+  left: 15%;
+  margin-top: 15%;
+  margin-right: 10%;
+
+}
+.br_text>h3{
+  font-size: 50px;
+}
+.br_text>p{
+  margin-top: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 600px;
+  text-align: left;
+}
+
+.br-img{
+  position: absolute;
+  margin-top: 50px;
+  width: 250px;
+  left: 70%;
+}
